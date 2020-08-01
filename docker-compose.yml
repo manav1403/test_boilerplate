@@ -4,6 +4,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
+    image: 'robotics-web-backend:latest'
     container_name: django
     restart: unless-stopped
     env_file: .env
@@ -27,6 +28,7 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
+    image: 'robotics-web-frontend:latest'
     container_name: vue
     restart: unless-stopped
     env_file: .env
