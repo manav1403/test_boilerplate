@@ -43,7 +43,7 @@ services:
       - django
     networks:
       - app-network
-    command: ls
+    command: npm run serve
   postgresql:
     image: 'bitnami/postgresql:latest'
     container_name: postgresql
