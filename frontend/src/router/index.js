@@ -1,73 +1,27 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
 
-Vue.use(Router);
+Vue.use(VueRouter)
 
-const router = new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: "/login",
-      name: "login",
-      component: Login,
-      meta: { hide: ["sidenav"], fillHeight: true }
-    },
-    {
-      path: "/logout",
-      name: "logout",
-      component: Logout,
-      meta: { hide: ["sidenav", "app-bar"] }
-    },
-    {
-      path: "/profile",
-      name: "profile",
-      component: Profile,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: "/currenttarelease",
-      name: "currenttarelease",
-      component: CurrentRelease
-    },
-    {
-      path: "/pasttarelease",
-      name: "pasttarelease",
-      component: PastRelease
-    },
-    {
-      path: "/current",
-      name: "current",
-      component: Current,
-      meta: { requiresAuth: true, taOnly: true }
-    },
-    {
-      path: "/past",
-      name: "past",
-      component: Past,
-      meta: { requiresAuth: true, taOnly: true }
-    },
-    {
-      path: "/approve-current",
-      name: "approve-current",
-      component: ApproveCurrent,
-      meta: { taSupervisorOnly: true }
-    },
-    {
-      path: "/ta-assignments",
-      name: "ta-assignments",
-      component: TaAssignment,
-      meta: { taCoordinatorOnly: true }
-    },
-    {
-      path: "/assign",
-      name: "assign",
-      component: TACoordi,
-      meta: { requiresAuth: true, taCoordinatorOnly: true }
-    }
-  ]
-});
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/about',
+    name: 'About',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  }
+]
 
-guards.forEach(guard => router.beforeEach(guard));
+const router = new VueRouter({
+  routes
+})
 
-export default router;
+export default router
