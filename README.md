@@ -4,7 +4,7 @@ Ensure that you have installed [Docker](https://docs.docker.com/install/) (with 
 
 Run the development server:
 ```
-cd <project_directory_name>  # ta_portal
+cd <project_directory_name>
 make dev-start
 ```
 
